@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries Info</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="./bundle.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <div class="search">
+            <input type="text" class="searchBar" id="searchInput" placeholder="Search for Country">
+            <button type="button" ><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1rem" width="1rem" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </div>
+        <div class="country">
+            <h1 class="countryName">SINGAPORE</h1>
+            <p><span class="countryName">Singapore</span> Flag</p> 
+            <img src="https://flagcdn.com/w320/sg.png" class="flagPic" alt="">
+            <p><span class="countryName">Singapore</span> Code of Arms</p> 
+            <img src="https://mainfacts.com/media/images/coats_of_arms/sg.png" class="codeOfArms" alt="">
+        </div>
+        <div class="map">
+            <p>Geolocation</p>
+            <div class="mapPic" id='map'>
+
+            </div>
+        </div>
+        <div class="genInfo">
+            <table class="tbInfo">
+                <caption>General Info</caption>
+                <tr>
+                    <th>Official Name:</th>
+                    <td class="officialName">Name</td>
+                </tr>
+                <tr>
+                    <th>Region:</th>
+                    <td class="region">region</td>
+                </tr>
+                <tr>
+                    <th>Subregion:</th>
+                    <td class="subregion">subregion</td>
+                </tr>
+                <tr>
+                    <th>Population:</th> 
+                    <td class="population">population</td>
+                </tr>
+                <tr>
+                    <th>Area (km<sup>2</sup>):</th>
+                    <td class="area">area</td>
+                </tr>
+                <tr>
+                    <th>Currency:</th>
+                    <td><span class="currency">currency</span>, <span class="currencyName">currencyName</span></td>
+                </tr>
+                <tr>
+                    <th>Independent:</th> 
+                    <td class="independent">independent</td>
+                </tr>
+                <tr>
+                    <th>Language(s):</th>
+                    <td class="languages">languages</td>
+                </tr>
+                <tr>
+                    <th>Capital:</th>
+                    <td class="capital">Capital</td>
+                </tr>
+            </table>
+        </div>
+        <div class="weatherInfo">
+            <div class="title">Weather in <span class="city">Singapore</span></div>
+            <div class="temp">Temperature</div>
+            <img src="https://openweathermap.org/img/wn/10d.png" class="icon" alt="">
+            <div class="description">description</div>
+            <div class="feelsLike">feels like</div>
+            <div class="humidity">Humidity</div>
+            <div class="wind">Wind</div>
+            <div class="cloud">cloudiness</div>
+        </div>
+        <div class="covidInfo">
+            <span class="covidTitle"><span class="countryName">Country</span> Covid-19 status (<span class="covidDate">date</span>)</span>
+            <div id="card1">
+                <canvas class="card" id="doughnutChart"></canvas>
+            </div>
+            <span class="comparisonTitle">World (G.) VS Country (L.) Statistics</span>
+            <div id="card2">
+                <div class="label1">
+                    <span class="stats statsGlobalCase">G. Cases: <span class="globalCases"></span></span>
+                    <span class="stats statsLocalCase">L. Cases: <span class="localCases"></span> <b>(<span class="casePercent">%</span>)</b></span>
+                </div>
+                <canvas class="card" id="barChart1"></canvas>
+            </div>
+            <div id="card3">
+                <div class="label2">
+                    <span class="stats statsGlobalDeath">G. Deaths: <span class="globalDeaths"></span></span>
+                    <span class="stats statsLocalDeath">L. Deaths: <span class="localDeaths"></span> <b>(<span class="deathPercent">%</span>)</b></span>
+                </div>
+                <canvas class="card" id="barChart2"></canvas>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

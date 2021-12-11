@@ -1,0 +1,320 @@
+html {
+    box-sizing: border-box;
+}
+*,*:before, *:after {
+    box-sizing: inherit;       
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    background-color: rgb(241, 240, 240);
+    opacity: 0.8;
+    width:64vw;
+    height: 83.5vh;
+    border-radius: 25px;
+    margin: 0;
+}
+
+.search{
+    display: flex;
+    position: relative;
+    justify-content: left;
+    height: 2rem;
+    margin: 1rem 0;
+}
+
+.searchBar {
+    width: 60%;
+    min-width: 12rem;
+    border-radius: 25px;
+    border: 2px solid grey;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+}
+
+.search button {
+    border-radius: 35px;
+    outline: none;
+    width: 2rem;
+    padding: 0;
+    border: 2px solid grey;
+    margin-left: 0.6rem;
+    cursor: pointer;
+}
+
+/*************************************** country styling ***********************************************/
+
+.country {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.country h1 {
+    text-transform: uppercase;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    padding: 0 1rem;
+    font-size: 2rem;
+}
+
+.country p {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.country p:first-of-type {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.2rem;
+    margin-bottom: 0.7rem;
+}
+
+.country .flagPic {
+    width: 100%;
+    max-height: 110px;
+    max-width: 240px;
+    padding: 0 1.5rem;
+}
+
+.country .codeOfArms {
+    max-width: 160px;
+    min-height: 70px;
+    max-height: 90px;
+    padding: 0 1.5rem;
+}
+
+table caption {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin-bottom: 0.3rem;
+}
+
+.tbInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.capital {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    text-align: left;
+}
+
+/*************************************** map styling ***********************************************/
+
+.map {
+    display: flex;  
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+}
+
+.map p {
+    margin-top: 0.6rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.mapPic {
+    width: 100%;
+    max-width: 20rem;
+    height: 95%;
+    max-height: 15rem;
+    background-color: rgb(95, 160, 104);
+    border-radius: 25px;
+    border: 0;
+}
+
+.mapboxgl-popup-content {
+    background-color: rgb(4, 17, 134);
+    color: white;
+    border-radius: 6px;
+    padding: 0.2rem;
+    font-weight: bold;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+    border-bottom-color: rgb(4, 17, 134)
+}
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+    border-top-color: rgb(4, 17, 134)
+}
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: rgb(4, 17, 134)
+}
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: rgb(4, 17, 134)
+}
+
+.mapboxgl-popup-close-button {
+    display:none;
+}
+
+/*************************************** weather styling ***********************************************/
+
+.weatherInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 0.8rem;
+    background-color: rgb(68, 143, 230);
+    width: 80%;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.weatherInfo .title{
+    font-size: 1.1rem;
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+
+.weatherInfo .temp{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.weatherInfo .icon {
+    width: 65px;
+    height: 65px;
+}
+
+.description {
+    margin-bottom: 0.5rem;
+}
+
+.description, .feelsLike, .humidity, .wind, .cloud {
+    font-size: 0.9rem;
+    font-weight:600;
+}
+
+/*************************************** Covid styling ***********************************************/
+
+.covidInfo {
+    display: grid;
+    grid-template-rows: 30px 25px 120px 120px;
+    grid-template-columns: 230px 195px 195px;
+    justify-content: space-evenly;
+}
+
+.covidInfo .covidTitle {
+    grid-area: 1/1/2/4;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin: 0;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.covidInfo .comparisonTitle {
+    grid-area: 2/2/3/4;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.covidInfo #card1 {
+    margin-top: 0.6rem;
+    width: 230px;
+    height: 230px;
+    grid-area: 2/1/5/2;
+}
+
+.covidInfo #card2 {
+    grid-area: 3/2/4/4;
+    display: grid;
+    grid-template-rows: 20px 100px;
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+}
+
+.covidInfo .label1 {
+    grid-area: 1/1/3/2;
+    display: inline;
+}
+
+.covidInfo #barChart1 {
+    grid-area: 2/1/3/2;
+    margin: 0;
+}
+
+.covidInfo #card3 {
+    grid-area: 4/2/5/4;
+    display: grid;
+    grid-template-rows: 20px 100px;
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+}
+
+.covidInfo .stats {
+    padding: 0.1rem;
+    color: rgb(0, 0, 0);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0.2rem;
+}
+
+.covidInfo .statsGlobalCase, .covidInfo .statsGlobalDeath {
+    background-color: rgb(255, 145, 0);
+    border: 2px solid rgb(219, 124, 0);
+}
+
+.covidInfo .statsLocalCase, .covidInfo .statsLocalDeath {
+    background-color: rgb(255, 234, 0);
+    border: 2px solid rgb(211, 193, 0);
+}
+
+/******************************************** Grid Style ************************************************/
+
+.container {
+    display: grid;
+    grid-template-rows: 60px 275px 295px;
+    grid-template-columns: 1fr 1fr 350px;
+}
+
+.country {
+    grid-area: 1/1/3/2;
+}
+
+.search {
+    grid-area: 1 / 2 / 2 / 4;
+}
+
+.flagPic {
+    grid-area: 2/2/2/3;
+}
+
+.genInfo {
+    grid-area: 2/2/3/3;
+}
+
+.map {
+    grid-area: 2/3/3/4;
+}
+
+.weatherInfo {
+    grid-area: 3/1/4/2;
+}
+
+.covidInfo {
+    grid-area: 3/2/4/4;
+}
