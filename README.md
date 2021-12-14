@@ -46,6 +46,6 @@ The idea of the project is to obtain more experience in frontend development. Th
 The project status is already deployed. The project have been deployed in netlify and functionality and responsiveness have been tested in multiple types of browser such as Chrome and Microsoft Edge.
 
 ## Setup
-1. open index.html file
-2. open dev tool console and type "fetchCountry("XXXXX")"; XXXXX = name of country OR just key a country name in the search bar of the webpage.
+1. Open index.html file
+2. Open dev tool console and type "fetchCountry("XXXXX")" (XXXXX = name of country) OR just key a country name in the search bar of the webpage.
 3. Project have been launch in netlify (https://angry-lumiere-e582d5.netlify.app/)
