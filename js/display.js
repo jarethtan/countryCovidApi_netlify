@@ -1,6 +1,6 @@
 const { doughnutChart, myBarChart1, myBarChart2 } = require("./charts")
 const { numberCommas, zoomSize } = require("./function")
-
+const { mapApiKey } = require("./config")
 
 module.exports.displayWeather = (data) => {
     const { name } = data;
@@ -20,7 +20,7 @@ module.exports.displayWeather = (data) => {
 }
 
 module.exports.displayMap = (countryLng , countryLat, area, capitalLng , capitalLat, capital) => {
-    mapboxgl.accessToken = process.env.MAP_API_KEY
+    mapboxgl.accessToken = mapApiKey 
 
     const map = new mapboxgl.Map({ // display map info
         container: 'map',

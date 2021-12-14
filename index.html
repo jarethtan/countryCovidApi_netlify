@@ -4,37 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    style-src 'self' https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css https://fonts.googleapis.com 'unsafe-inline'; 
+    font-src https://fonts.gstatic.com;
+    img-src 'self' data: https://images.unsplash.com https://source.unsplash.com https://flagcdn.com https://mainfacts.com https://openweathermap.org;
+    connect-src 'self' https://restcountries.com https://events.mapbox.com https://api.openweathermap.org https://api.mapbox.com https://corona.lmao.ninja https://api.covid19api.com https://api.mapbox.com;
+    script-src 'self' blob: https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js https://fonts.googleapis.com https://api.openweathermap.org https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js 'unsafe-inline'; ">
     <title>Countries Info</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@300;400;500;600;700&family=Poppins&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="./bundle.js" defer></script>
+    <script src="./js/bundle.js" defer></script>
 </head>
 <body>
     <main class="container">
         <div class="search">
-            <input type="text" class="searchBar" id="searchInput" placeholder="Search for Country">
+            <input type="text" class="searchBar" id="searchInput" placeholder="Search for Country Info">
             <button type="button" ><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1rem" width="1rem" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
         </div>
-        <div class="country">
-            <h1 class="countryName">SINGAPORE</h1>
-            <p><span class="countryName">Singapore</span> Flag</p> 
-            <img src="https://flagcdn.com/w320/sg.png" class="flagPic" alt="">
-            <p><span class="countryName">Singapore</span> Code of Arms</p> 
-            <img src="https://mainfacts.com/media/images/coats_of_arms/sg.png" class="codeOfArms" alt="">
+        <div class="country load loading">
+            <h1 class="countryName">Country Name</h1>
+            <p><span class="countryName">Country's</span> (Flag)</p> 
+            <img src="" class="flagPic" alt="">
+            <p><span class="countryName">Country's</span> (Code of Arms)</p> 
+            <img src="" class="codeOfArms" alt="">
         </div>
-        <div class="map">
+        <div class="map load loading">
             <p>Geolocation</p>
             <div class="mapPic" id='map'>
 
             </div>
         </div>
-        <div class="genInfo">
+        <div class="genInfo load loading">
             <table class="tbInfo">
                 <caption>General Info</caption>
                 <tr>
-                    <th>Official Name:</th>
+                    <th>Official:</th>
                     <td class="officialName">Name</td>
                 </tr>
                 <tr>
@@ -71,18 +81,18 @@
                 </tr>
             </table>
         </div>
-        <div class="weatherInfo">
-            <div class="title">Weather in <span class="city">Singapore</span></div>
+        <div class="weatherInfo load loading">
+            <div class="title">Weather in <span class="city">Capital</span></div>
             <div class="temp">Temperature</div>
-            <img src="https://openweathermap.org/img/wn/10d.png" class="icon" alt="">
-            <div class="description">description</div>
-            <div class="feelsLike">feels like</div>
+            <img src="" class="icon" alt="">
+            <div class="description">Description</div>
+            <div class="feelsLike">Feels like</div>
             <div class="humidity">Humidity</div>
             <div class="wind">Wind</div>
-            <div class="cloud">cloudiness</div>
+            <div class="cloud">Cloudiness</div>
         </div>
-        <div class="covidInfo">
-            <span class="covidTitle"><span class="countryName">Country</span> Covid-19 status (<span class="covidDate">date</span>)</span>
+        <div class="covidInfo load loading">
+            <span class="covidTitle"><span class="countryName">Country's</span> Covid-19 status (<span class="covidDate">date</span>)</span>
             <div id="card1">
                 <canvas class="card" id="doughnutChart"></canvas>
             </div>

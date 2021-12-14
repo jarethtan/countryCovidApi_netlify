@@ -1,7 +1,8 @@
 const { displayWeather, displayCovid } = require('./display')
+const { weatherApiKey } = require("./config")
 
 module.exports.fetchWeather = (capital) => {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + capital + "&units=metric&appid=a53932e7949e91d6083eb23afd4574a3")
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + capital + "&units=metric&appid=" + weatherApiKey)
     .then(res => {
         if (res.ok) {
             console.log('Successfully retrieve weather API info');

@@ -59,6 +59,11 @@ let country = {
 
         fetchCovid(common) // fetch covid info and display
 
+        const loadingInfo = document.querySelectorAll('.load');
+        loadingInfo.forEach(function(item) {
+            item.classList.remove('loading')
+        })
+        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + capital + "')" // display background pic related to country
     },
     search: function () { // search function 
         this.fetchCountry(document.querySelector("#searchInput").value)
