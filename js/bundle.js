@@ -342,7 +342,7 @@ module.exports.zoomSize = (area) => {
     else return 1.9
 } 
 },{}],6:[function(require,module,exports){
-const {numberCommas, zoomSize} = require("./function")
+const {numberCommas} = require("./function")
 const { fetchWeather, fetchCovid } = require("./fetch")
 const { displayMap } = require('./display')
 

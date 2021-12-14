@@ -1,9 +1,9 @@
-const {numberCommas, zoomSize} = require("./function")
+const {numberCommas} = require("./function")
 const { fetchWeather, fetchCovid } = require("./fetch")
 const { displayMap } = require('./display')
 
 let country = {
-    fetchCountry: function(country) {
+    fetchCountry: function(country) { // main fetch function for the website
         fetch("https://restcountries.com/v3.1/name/" + country)
         .then(res => {
             if (res.ok) {
@@ -18,7 +18,7 @@ let country = {
         .then(data => this.displayCountry(data))
         .catch(err => console.log("Error", err))
     },
-    displayCountry: function(data) {
+    displayCountry: function(data) { // main display function for the website
         const { common, official } = data[0].name;
         const flag = data[0].flags.png;
         const coatOfArms = data[0].coatOfArms.png;
@@ -53,9 +53,9 @@ let country = {
         document.querySelector('.independent').textContent = independence ? "Yes" : "No";
         document.querySelector('.population').textContent = numberCommas(population);
       
-        fetchWeather(capital[0]) // fetch weather info and display
+        fetchWeather(capital[0]) // fetch weather info and display. Using capital variable from main display function and passing it into fetchWeather to get the weather information of the country's capital.
 
-        displayMap(countryLng , countryLat, area, capitalLng , capitalLat, capital) // display map info.
+        displayMap(countryLng , countryLat, area, capitalLng , capitalLat, capital) // display map info of the country and the capital location
 
         fetchCovid(common) // fetch covid info and display
 
@@ -65,17 +65,17 @@ let country = {
         })
         document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + capital + "')" // display background pic related to country
     },
-    search: function () { // search function 
+    search: function () { // search function of the webpage
         this.fetchCountry(document.querySelector("#searchInput").value)
     }
 }
 document.querySelector(".search button").addEventListener("click", function() {
-        country.search();
+        country.search(); // click action to call api information
 })
 
 document.querySelector("#searchInput").addEventListener("keyup", function(input) {
     if(input.key == "Enter") country.search();
-})
+}) // enter key to initalise search
 
 window.country = country // access country as global variable when applying browserify.
 

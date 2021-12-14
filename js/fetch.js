@@ -18,7 +18,7 @@ module.exports.fetchWeather = (capital) => {
 }
 
 module.exports.fetchCovid = (country) => {
-    fetch("https://corona.lmao.ninja/v2/countries/" + country + "?yesterday&strict&query%20")
+    fetch("https://corona.lmao.ninja/v2/countries/" + country + "?yesterday&strict&query%20") // fetch function to get country data for covid
     .then(res => {
         if (res.ok) {
             console.log(`Successfully retrieve ${country}'s Covid-19 API info`);
@@ -31,7 +31,7 @@ module.exports.fetchCovid = (country) => {
         })
     .then(data => { 
         countryData = data;
-        return fetch("https://api.covid19api.com/summary")
+        return fetch("https://api.covid19api.com/summary") // nested fetch function within another fetch function to get global data for covid
     })
     .then(res => {
         if (res.ok) {

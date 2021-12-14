@@ -36,7 +36,7 @@ module.exports.doughnutChart = (ctx, localDeaths, localActive, localRecovered) =
                             const totalCase = countryData.cases; 
                             return datasets[0].data.map((data, i) => ({
                                 text: `${chart.data.labels[i]} (${((data/totalCase)*100).toFixed(1)}%)`,
-                                fillStyle: datasets[0].backgroundColor[i],
+                                fillStyle: datasets[0].backgroundColor[i], // generate (%) next to the legend of the doughnut chart.
                             }))
                         },
                         color: "black",
@@ -62,7 +62,7 @@ module.exports.doughnutChart = (ctx, localDeaths, localActive, localRecovered) =
                 ctx.font = fontSize + "em sans-serif";
                 ctx.textBaseline = "middle";
         
-                const text1 = ("Country"),
+                const text1 = ("Country"), // this whole code from line 65 to 74 is to insert the "country breakdown" text in the middle of the doughnut chart.
                 text1X = Math.round((width - ctx.measureText(text1).width) / 2),
                 text1Y = height / 1.9;
                 const text2 = ("Breakdown"),
