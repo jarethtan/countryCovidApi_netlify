@@ -37,7 +37,7 @@ module.exports.doughnutChart = (ctx, localDeaths, localActive, localRecovered) =
                             const totalCase = countryData.cases; 
                             return datasets[0].data.map((data, i) => ({
                                 text: `${chart.data.labels[i]} (${((data/totalCase)*100).toFixed(1)}%)`,
-                                fillStyle: datasets[0].backgroundColor[i],
+                                fillStyle: datasets[0].backgroundColor[i], // generate (%) next to the legend of the doughnut chart.
                             }))
                         },
                         color: "black",
@@ -63,7 +63,7 @@ module.exports.doughnutChart = (ctx, localDeaths, localActive, localRecovered) =
                 ctx.font = fontSize + "em sans-serif";
                 ctx.textBaseline = "middle";
         
-                const text1 = ("Country"),
+                const text1 = ("Country"), // this whole code from line 65 to 74 is to insert the "country breakdown" text in the middle of the doughnut chart.
                 text1X = Math.round((width - ctx.measureText(text1).width) / 2),
                 text1Y = height / 1.9;
                 const text2 = ("Breakdown"),
@@ -221,7 +221,7 @@ module.exports.displayMap = (countryLng , countryLat, area, capitalLng , capital
         container: 'map',
         style: "mapbox://styles/mapbox/streets-v11",
         center: [ countryLng , countryLat ],
-        zoom: zoomSize(area)
+        zoom: zoomSize(area) // zoomsize function to indicate how much to zoom based on country's area. function can be found in function.js 
     })
     map.addControl(new mapboxgl.NavigationControl())
     const popup = new mapboxgl.Popup().setLngLat([ capitalLng , capitalLat ]).setHTML(`<span>${capital}</span>`).addTo(map).togglePopup;
@@ -247,35 +247,35 @@ module.exports.displayCovid = (countryData, globalData) => {
 
 //////////////////////////// Properties for Doughnut Chart /////////////////////////////////
 
-    document.getElementById('doughnutChart').remove();     
+    document.getElementById('doughnutChart').remove(); // require to remove previously generated chart before generating a new chart.    
     let canvas1 = document.createElement('canvas');     
     canvas1.setAttribute('id','doughnutChart'); 
-    document.querySelector('#card1').appendChild(canvas1);
+    document.querySelector('#card1').appendChild(canvas1); // append a new canvas element into div with id "card1"
 
-    const ctx1 = document.getElementById('doughnutChart').getContext('2d');
+    const ctx1 = document.getElementById('doughnutChart').getContext('2d');  // creating a new chart
     doughnutChart(ctx1, localDeaths, localActive, localRecovered)
 
 //////////////////////////// Properties for Bar Chart1 /////////////////////////////////
 
-    document.getElementById('barChart1').remove();   
+    document.getElementById('barChart1').remove(); // require to remove previously generated chart before generating a new chart.
     let canvas2 = document.createElement('canvas');     
     canvas2.setAttribute('id','barChart1'); 
-    document.querySelector('#card2').appendChild(canvas2);
+    document.querySelector('#card2').appendChild(canvas2); // append a new canvas element into div with id "card1"
 
-    const ctx2 = document.getElementById("barChart1").getContext("2d");
-    ctx2.canvas.width = 750;
+    const ctx2 = document.getElementById("barChart1").getContext("2d");  // creating a new chart
+    ctx2.canvas.width = 750; // sizing the chart
     ctx2.canvas.height = 150;
     myBarChart1(ctx2, globalCases, localCases)
 
 //////////////////////////// Properties for Bar Chart2 /////////////////////////////////
 
-    document.getElementById('barChart2').remove();   
+    document.getElementById('barChart2').remove(); // require to remove previously generated chart before generating a new chart.
     let canvas3 = document.createElement('canvas');     
     canvas3.setAttribute('id','barChart2'); 
-    document.querySelector('#card3').appendChild(canvas3);
+    document.querySelector('#card3').appendChild(canvas3); // append a new canvas element into div with id "card1"
 
-    const ctx3 = document.getElementById("barChart2").getContext("2d");
-    ctx3.canvas.width = 750;
+    const ctx3 = document.getElementById("barChart2").getContext("2d");  // creating a new chart
+    ctx3.canvas.width = 750; // sizing the chart
     ctx3.canvas.height = 150;
     myBarChart2(ctx3, globalDeaths, localDeaths)
 }
@@ -300,7 +300,7 @@ module.exports.fetchWeather = (capital) => {
 }
 
 module.exports.fetchCovid = (country) => {
-    fetch("https://corona.lmao.ninja/v2/countries/" + country + "?yesterday&strict&query%20")
+    fetch("https://corona.lmao.ninja/v2/countries/" + country + "?yesterday&strict&query%20") // fetch function to get country data for covid
     .then(res => {
         if (res.ok) {
             console.log(`Successfully retrieve ${country}'s Covid-19 API info`);
@@ -313,7 +313,7 @@ module.exports.fetchCovid = (country) => {
         })
     .then(data => { 
         countryData = data;
-        return fetch("https://api.covid19api.com/summary")
+        return fetch("https://api.covid19api.com/summary") // nested fetch function within another fetch function to get global data for covid
     })
     .then(res => {
         if (res.ok) {
@@ -347,7 +347,7 @@ const { fetchWeather, fetchCovid } = require("./fetch")
 const { displayMap } = require('./display')
 
 let country = {
-    fetchCountry: function(country) {
+    fetchCountry: function(country) { // main fetch function for the website
         fetch("https://restcountries.com/v3.1/name/" + country)
         .then(res => {
             if (res.ok) {
@@ -362,7 +362,7 @@ let country = {
         .then(data => this.displayCountry(data))
         .catch(err => console.log("Error", err))
     },
-    displayCountry: function(data) {
+    displayCountry: function(data) { // main display function for the website
         const { common, official } = data[0].name;
         const flag = data[0].flags.png;
         const coatOfArms = data[0].coatOfArms.png;
@@ -397,9 +397,9 @@ let country = {
         document.querySelector('.independent').textContent = independence ? "Yes" : "No";
         document.querySelector('.population').textContent = numberCommas(population);
       
-        fetchWeather(capital[0]) // fetch weather info and display
+        fetchWeather(capital[0]) // fetch weather info and display. Using capital variable from main display function and passing it into fetchWeather to get the weather information of the country's capital.
 
-        displayMap(countryLng , countryLat, area, capitalLng , capitalLat, capital) // display map info.
+        displayMap(countryLng , countryLat, area, capitalLng , capitalLat, capital) // display map info of the country and the capital location
 
         fetchCovid(common) // fetch covid info and display
 
@@ -409,17 +409,17 @@ let country = {
         })
         document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + capital + "')" // display background pic related to country
     },
-    search: function () { // search function 
+    search: function () { // search function of the webpage
         this.fetchCountry(document.querySelector("#searchInput").value)
     }
 }
 document.querySelector(".search button").addEventListener("click", function() {
-        country.search();
+        country.search(); // click action to call api information
 })
 
 document.querySelector("#searchInput").addEventListener("keyup", function(input) {
     if(input.key == "Enter") country.search();
-})
+}) // enter key to initalise search
 
 window.country = country // access country as global variable when applying browserify.
 
